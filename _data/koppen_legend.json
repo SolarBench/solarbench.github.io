@@ -1,0 +1,332 @@
+[
+  {
+    "code": "Af",
+    "description": "Tropical, rainforest",
+    "rgba": [
+      16,
+      1,
+      242,
+      255
+    ],
+    "css": "rgba(16, 1, 242, 1.0)"
+  },
+  {
+    "code": "Am",
+    "description": "Tropical, monsoon",
+    "rgba": [
+      52,
+      113,
+      243,
+      255
+    ],
+    "css": "rgba(52, 113, 243, 1.0)"
+  },
+  {
+    "code": "Aw",
+    "description": "Tropical, savannah",
+    "rgba": [
+      124,
+      175,
+      224,
+      255
+    ],
+    "css": "rgba(124, 175, 224, 1.0)"
+  },
+  {
+    "code": "BWh",
+    "description": "Arid, desert, hot",
+    "rgba": [
+      255,
+      0,
+      0,
+      255
+    ],
+    "css": "rgba(255, 0, 0, 1.0)"
+  },
+  {
+    "code": "BWk",
+    "description": "Arid, desert, cold",
+    "rgba": [
+      255,
+      150,
+      150,
+      255
+    ],
+    "css": "rgba(255, 150, 150, 1.0)"
+  },
+  {
+    "code": "BSh",
+    "description": "Arid, steppe, hot",
+    "rgba": [
+      245,
+      165,
+      0,
+      255
+    ],
+    "css": "rgba(245, 165, 0, 1.0)"
+  },
+  {
+    "code": "BSk",
+    "description": "Arid, steppe, cold",
+    "rgba": [
+      255,
+      220,
+      100,
+      255
+    ],
+    "css": "rgba(255, 220, 100, 1.0)"
+  },
+  {
+    "code": "Csa",
+    "description": "Temperate, dry summer, hot summer",
+    "rgba": [
+      255,
+      255,
+      0,
+      255
+    ],
+    "css": "rgba(255, 255, 0, 1.0)"
+  },
+  {
+    "code": "Csb",
+    "description": "Temperate, dry summer, warm summer",
+    "rgba": [
+      200,
+      200,
+      0,
+      255
+    ],
+    "css": "rgba(200, 200, 0, 1.0)"
+  },
+  {
+    "code": "Csc",
+    "description": "Temperate, dry summer, cold summer",
+    "rgba": [
+      150,
+      150,
+      0,
+      255
+    ],
+    "css": "rgba(150, 150, 0, 1.0)"
+  },
+  {
+    "code": "Cwa",
+    "description": "Temperate, dry winter, hot summer",
+    "rgba": [
+      150,
+      255,
+      150,
+      255
+    ],
+    "css": "rgba(150, 255, 150, 1.0)"
+  },
+  {
+    "code": "Cwb",
+    "description": "Temperate, dry winter, warm summer",
+    "rgba": [
+      100,
+      200,
+      100,
+      255
+    ],
+    "css": "rgba(100, 200, 100, 1.0)"
+  },
+  {
+    "code": "Cwc",
+    "description": "Temperate, dry winter, cold summer",
+    "rgba": [
+      50,
+      150,
+      50,
+      255
+    ],
+    "css": "rgba(50, 150, 50, 1.0)"
+  },
+  {
+    "code": "Cfa",
+    "description": "Temperate, no dry season, hot summer",
+    "rgba": [
+      200,
+      255,
+      80,
+      255
+    ],
+    "css": "rgba(200, 255, 80, 1.0)"
+  },
+  {
+    "code": "Cfb",
+    "description": "Temperate, no dry season, warm summer",
+    "rgba": [
+      100,
+      255,
+      80,
+      255
+    ],
+    "css": "rgba(100, 255, 80, 1.0)"
+  },
+  {
+    "code": "Cfc",
+    "description": "Temperate, no dry season, cold summer",
+    "rgba": [
+      50,
+      200,
+      0,
+      255
+    ],
+    "css": "rgba(50, 200, 0, 1.0)"
+  },
+  {
+    "code": "Dsa",
+    "description": "Cold, dry summer, hot summer",
+    "rgba": [
+      255,
+      0,
+      255,
+      255
+    ],
+    "css": "rgba(255, 0, 255, 1.0)"
+  },
+  {
+    "code": "Dsb",
+    "description": "Cold, dry summer, warm summer",
+    "rgba": [
+      200,
+      0,
+      200,
+      255
+    ],
+    "css": "rgba(200, 0, 200, 1.0)"
+  },
+  {
+    "code": "Dsc",
+    "description": "Cold, dry summer, cold summer",
+    "rgba": [
+      150,
+      50,
+      150,
+      255
+    ],
+    "css": "rgba(150, 50, 150, 1.0)"
+  },
+  {
+    "code": "Dsd",
+    "description": "Cold, dry summer, very cold winter",
+    "rgba": [
+      150,
+      100,
+      150,
+      255
+    ],
+    "css": "rgba(150, 100, 150, 1.0)"
+  },
+  {
+    "code": "Dwa",
+    "description": "Cold, dry winter, hot summer",
+    "rgba": [
+      170,
+      175,
+      255,
+      255
+    ],
+    "css": "rgba(170, 175, 255, 1.0)"
+  },
+  {
+    "code": "Dwb",
+    "description": "Cold, dry winter, warm summer",
+    "rgba": [
+      90,
+      120,
+      220,
+      255
+    ],
+    "css": "rgba(90, 120, 220, 1.0)"
+  },
+  {
+    "code": "Dwc",
+    "description": "Cold, dry winter, cold summer",
+    "rgba": [
+      75,
+      80,
+      180,
+      255
+    ],
+    "css": "rgba(75, 80, 180, 1.0)"
+  },
+  {
+    "code": "Dwd",
+    "description": "Cold, dry winter, very cold winter",
+    "rgba": [
+      50,
+      0,
+      135,
+      255
+    ],
+    "css": "rgba(50, 0, 135, 1.0)"
+  },
+  {
+    "code": "Dfa",
+    "description": "Cold, no dry season, hot summer",
+    "rgba": [
+      0,
+      255,
+      255,
+      255
+    ],
+    "css": "rgba(0, 255, 255, 1.0)"
+  },
+  {
+    "code": "Dfb",
+    "description": "Cold, no dry season, warm summer",
+    "rgba": [
+      55,
+      200,
+      255,
+      255
+    ],
+    "css": "rgba(55, 200, 255, 1.0)"
+  },
+  {
+    "code": "Dfc",
+    "description": "Cold, no dry season, cold summer",
+    "rgba": [
+      0,
+      125,
+      125,
+      255
+    ],
+    "css": "rgba(0, 125, 125, 1.0)"
+  },
+  {
+    "code": "Dfd",
+    "description": "Cold, no dry season, very cold winter",
+    "rgba": [
+      0,
+      70,
+      95,
+      255
+    ],
+    "css": "rgba(0, 70, 95, 1.0)"
+  },
+  {
+    "code": "ET",
+    "description": "Polar, tundra",
+    "rgba": [
+      128,
+      128,
+      128,
+      76.5
+    ],
+    "css": "rgba(128, 128, 128, 0.3)"
+  },
+  {
+    "code": "EF",
+    "description": "Polar, frost",
+    "rgba": [
+      128,
+      128,
+      128,
+      153.0
+    ],
+    "css": "rgba(128, 128, 128, 0.6)"
+  }
+]

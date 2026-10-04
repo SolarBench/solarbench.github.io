@@ -1,0 +1,57 @@
+[
+  {
+    "lower": 50,
+    "upper": 75,
+    "color": "#fff7ec"
+  },
+  {
+    "lower": 75,
+    "upper": 100,
+    "color": "#feebcf"
+  },
+  {
+    "lower": 100,
+    "upper": 125,
+    "color": "#fddcae"
+  },
+  {
+    "lower": 125,
+    "upper": 150,
+    "color": "#fdca93"
+  },
+  {
+    "lower": 150,
+    "upper": 175,
+    "color": "#fcb17b"
+  },
+  {
+    "lower": 175,
+    "upper": 200,
+    "color": "#fc8d59"
+  },
+  {
+    "lower": 200,
+    "upper": 225,
+    "color": "#f16c4b"
+  },
+  {
+    "lower": 225,
+    "upper": 250,
+    "color": "#e0452f"
+  },
+  {
+    "lower": 250,
+    "upper": 275,
+    "color": "#c81c12"
+  },
+  {
+    "lower": 275,
+    "upper": 300,
+    "color": "#a80000"
+  },
+  {
+    "lower": 300,
+    "upper": 325,
+    "color": "#7f0000"
+  }
+]

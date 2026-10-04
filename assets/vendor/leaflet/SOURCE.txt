@@ -1,0 +1,5 @@
+Leaflet 1.9.4 (BSD 2-Clause License)
+https://leafletjs.com/
+https://unpkg.com/leaflet@1.9.4/dist/
+
+The JavaScript sourceMappingURL comment was removed because the source map is not bundled. See LICENSE for the original copyright and license notice.

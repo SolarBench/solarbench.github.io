@@ -1,0 +1,94 @@
+{% assign sorted_sites = site.data.sites | sort: "site_name" %}
+<section class="site-explorer" aria-label="SolarBench site explorer">
+  <div class="explorer-toolbar">
+    <label for="site-select">Explore a site</label>
+    <select id="site-select">
+      {% for location in sorted_sites %}
+      <option value="{{ location.id }}">{{ location.site_name | escape }} — {{ location.country | escape }}</option>
+      {% endfor %}
+    </select>
+    <label for="map-layer">Basemap</label>
+    <select id="map-layer" disabled>
+      <option value="radiation">Solar radiation</option>
+      <option value="koppen">Köppen climate classes</option>
+    </select>
+    <button type="button" class="btn" id="map-reset">Show all sites</button>
+  </div>
+  <div class="explorer-grid">
+    <div class="explorer-map-area">
+      <div id="solarbench-map" aria-label="Map of SolarBench observation sites"></div>
+      <div class="explorer-legend"><strong>Forecast target</strong><span><i class="target-irradiance"></i>Irradiance</span><span><i class="target-pv"></i>PV output</span></div>
+      <div id="radiation-legend" class="radiation-legend" hidden>
+        <strong>Downward surface solar radiation (W/m²)</strong>
+        <div class="radiation-bar" role="img" aria-label="Solar radiation in 25 W/m² bands from 50 to 325 W/m²">
+          <div class="radiation-segments">{% for bin in site.data.radiation_legend %}<span style="background: {{ bin.color }};"></span>{% endfor %}</div>
+          <div class="radiation-boundaries">{% for bin in site.data.radiation_legend %}<span style="left: {{ forloop.index0 | times: 100.0 | divided_by: 11 }}%;">{{ bin.lower }}</span>{% endfor %}<span style="left: 100%;">325</span></div>
+        </div>
+        <small>ERA5 · Long-term mean, 1980–2020</small>
+      </div>
+      <div id="koppen-legend" class="koppen-legend" hidden>
+        <strong>Köppen climate classification · 1991–2020</strong>
+        <small>Beck et al. (2023) · Approximately 1 km source grid</small>
+        <p>Tropical (A) · Dry (B) · Temperate (C) · Continental (D) · Polar (E)</p>
+          <ul>{% for item in site.data.koppen_legend %}<li><i style="background: {{ item.css }};" aria-hidden="true"></i>{{ item.code }}</li>{% endfor %}</ul>
+      </div>
+      <p id="map-status" role="status" hidden></p>
+    </div>
+    <div class="explorer-details" aria-live="polite">
+      {% for location in sorted_sites %}
+      <article class="site-detail" id="detail-{{ location.id }}" {% unless forloop.first %}hidden{% endunless %}>
+        <div class="site-title-row">
+          <h3>{{ location.site_name | escape }}</h3>
+          {% for target in location.label %}<span class="target-badge {% if target == 'PV output' %}badge-pv{% else %}badge-irradiance{% endif %}">{{ target | escape }}</span>{% endfor %}
+          <span class="site-region">{{ location.country | escape }} · {{ location.continent | escape }}</span>
+        </div>
+        <dl class="site-facts">
+          <dt>Coordinates</dt><dd class="site-coordinates"><span>{{ location.lat | round: 3 }}°, {{ location.lon | round: 3 }}°</span><a href="https://www.google.com/maps/place/{{ location.lat }},{{ location.lon }}/@{{ location.lat }},{{ location.lon }},17z/data=!3m1!1e3" target="_blank" rel="noopener noreferrer" aria-label="Satellite view for {{ location.site_name | escape }} in Google Maps">Satellite view <span aria-hidden="true">↗</span></a></dd>
+          <dt>Climate class</dt><dd><span class="climate-code">{{ location.climate.koppen_geiger }}</span>{% if location.climate.description %}<span class="climate-description">{{ location.climate.description | escape }}</span>{% endif %}</dd>
+          {% if location.solar_radiation %}
+          <dt>Mean solar <span class="metric-label-end">radiation <span class="metric-info-button" style="display: inline; border: 0 !important; background: transparent; box-shadow: none; padding: 0 2px; font: 400 12px/1 Arial, sans-serif; vertical-align: super; cursor: help;" tabindex="0" data-tooltip="radiation-{{ location.id }}" aria-describedby="radiation-{{ location.id }}" aria-label="About long-term average surface solar radiation">ⓘ</span></span><div id="radiation-{{ location.id }}" class="metric-definition" popover="manual" role="tooltip" style="position: fixed; inset: auto; width: 180px; max-width: calc(100vw - 32px); margin: 0; padding: 7px 9px; border: 1px solid #dce5ed !important; border-radius: 6px; background: white; color: #334455; font: 400 8px/1.5 Arial, sans-serif !important; text-align: left; white-space: normal; box-shadow: none; pointer-events: none;">Long-term average surface solar radiation. {{ location.solar_radiation.source }} · {{ location.solar_radiation.period }}</div></dt><dd>{{ location.solar_radiation.mean_w_m2 }} W/m²</dd>
+          {% endif %}
+          <dt><span class="metric-label-end">Variability index <span class="metric-info-button" style="display: inline; border: 0 !important; background: transparent; box-shadow: none; padding: 0 2px; font: 400 12px/1 Arial, sans-serif; vertical-align: super; cursor: help;" tabindex="0" data-tooltip="variability-{{ location.id }}" aria-describedby="variability-{{ location.id }}" aria-label="About variability index">ⓘ</span></span><div id="variability-{{ location.id }}" class="metric-definition" popover="manual" role="tooltip" style="position: fixed; inset: auto; width: 180px; max-width: calc(100vw - 32px); margin: 0; padding: 7px 9px; border: 1px solid #dce5ed !important; border-radius: 6px; background: white; color: #334455; font: 400 8px/1.5 Arial, sans-serif !important; text-align: left; white-space: normal; box-shadow: none; pointer-events: none;">The root mean square of consecutive 5-min changes in the clear sky index, with higher values indicating greater short-term variability.</div></dt>
+          <dd>{% if location.variability.index != nil %}{{ location.variability.index }}{% else %}<small>Data forthcoming</small>{% endif %}</dd>
+          <dt>% of large <span class="metric-label-end">ramps <span class="metric-info-button" style="display: inline; border: 0 !important; background: transparent; box-shadow: none; padding: 0 2px; font: 400 12px/1 Arial, sans-serif; vertical-align: super; cursor: help;" tabindex="0" data-tooltip="ramps-{{ location.id }}" aria-describedby="ramps-{{ location.id }}" aria-label="About percentage of large ramps">ⓘ</span></span><div id="ramps-{{ location.id }}" class="metric-definition" popover="manual" role="tooltip" style="position: fixed; inset: auto; width: 180px; max-width: calc(100vw - 32px); margin: 0; padding: 7px 9px; border: 1px solid #dce5ed !important; border-radius: 6px; background: white; color: #334455; font: 400 8px/1.5 Arial, sans-serif !important; text-align: left; white-space: normal; box-shadow: none; pointer-events: none;">5-min absolute changes in clear sky index exceeding 0.1.</div></dt>
+          <dd>{% if location.variability.large_ramp_fraction != nil %}{{ location.variability.large_ramp_fraction | times: 100 | round: 1 }}%{% else %}<small>Data forthcoming</small>{% endif %}</dd>
+          <dt>Observation span</dt><dd class="observation-period">{{ location.start_date }} – {{ location.end_date }}</dd>
+          {% if location.pv_system %}
+          <dt>PV system</dt><dd>{{ location.pv_system.capacity_kw }} kW · {{ location.pv_system.configuration | escape }}</dd>
+          {% endif %}
+        </dl>
+        <h4 class="available-data-heading" style="font-size: 18px !important;">Available data</h4>
+        <div class="site-data-groups">
+          {% for category in location.data_categories %}
+          <section class="site-data-group{% if category.resolution_periods.size > 0 %} has-resolution-details{% endif %}" aria-label="{{ category.name | escape }}">
+            <div class="site-data-heading">
+              <h5>{{ category.name | escape }}</h5>
+              {% if forloop.first %}<span class="site-data-column-heading">Temporal resolution</span>{% endif %}
+            </div>
+            <div class="site-data-modalities">
+              <ul class="modality-tags">{% for modality in category.modalities %}
+                {% assign measurement_list = nil %}
+                {% if modality == 'Irradiance' %}{% assign measurement_list = location.ground_measurements.irradiance %}{% endif %}
+                {% if modality == 'Meteorological measurements' %}{% assign measurement_list = location.ground_measurements.meteorological %}{% endif %}
+                {% assign tooltip_text = measurement_list | join: ', ' %}
+                {% if modality == 'Irradiance' and location.ground_measurements.irradiance_summary %}{% assign tooltip_text = location.ground_measurements.irradiance_summary %}{% endif %}
+                <li>{% if measurement_list.size > 0 %}<button type="button" class="modality-info-trigger" data-tooltip="modality-{{ location.id }}-{{ modality | slugify }}" aria-describedby="modality-{{ location.id }}-{{ modality | slugify }}" aria-label="{{ modality | escape }}: {{ tooltip_text | escape }}">{{ modality | escape }}</button><span id="modality-{{ location.id }}-{{ modality | slugify }}" class="metric-definition modality-definition" popover="manual" role="tooltip" style="position: fixed; inset: auto; width: {% if modality == 'Irradiance' %}100px{% else %}180px{% endif %} !important; max-width: min({% if modality == 'Irradiance' %}100px{% else %}180px{% endif %}, calc(100vw - 32px)) !important; margin: 0; padding: 6px 8px !important; border: 1px solid #dce5ed !important; border-radius: 6px; background: white; color: #334455; font: 400 10px/1.4 Arial, sans-serif !important; text-align: left; white-space: normal; box-shadow: none; pointer-events: none;">{{ tooltip_text | escape }}</span>{% else %}{{ modality | escape }}{% if modality == 'Satellite imagery' and category.source_name %} ({{ category.source_name | escape }}){% endif %}{% endif %}</li>
+              {% endfor %}</ul>
+              {% if category.temporal_resolution %}
+              <span class="data-resolution">{{ category.temporal_resolution | escape }}{% if category.resolution_periods.size > 0 %} <span class="metric-info-button" style="display: inline; border: 0 !important; background: transparent; box-shadow: none; padding: 0 2px; font: 400 12px/1 Arial, sans-serif; vertical-align: super; cursor: help;" tabindex="0" data-tooltip="resolution-{{ location.id }}" aria-describedby="resolution-{{ location.id }}" aria-label="Temporal resolution by period">ⓘ</span><span id="resolution-{{ location.id }}" class="metric-definition" popover="manual" role="tooltip" style="position: fixed; inset: auto; width: 220px; max-width: calc(100vw - 32px); margin: 0; padding: 7px 9px; border: 1px solid #dce5ed !important; border-radius: 6px; background: white; color: #334455; font: 400 8px/1.5 Arial, sans-serif !important; text-align: left; white-space: normal; box-shadow: none; pointer-events: none;">{% for period in category.resolution_periods %}{{ period | escape }}{% unless forloop.last %}<br>{% endunless %}{% endfor %}</span>{% endif %}</span>
+              {% endif %}
+            </div>
+          </section>
+          {% endfor %}
+        </div>
+        {% if location.ground_measurements.irradiance.size > 0 or location.ground_measurements.meteorological.size > 0 %}
+        <p class="site-data-hint">Hover over the measurement tags to view the specific variables available.</p>
+        {% endif %}
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+  <noscript><p>Enable JavaScript to switch sites on the map. All sites are also listed in the table below.</p></noscript>
+</section>
+<link href="{{ '/assets/vendor/leaflet/leaflet.css' | relative_url }}" rel="stylesheet">
+<script src="{{ '/assets/vendor/leaflet/leaflet.js' | relative_url }}"></script>

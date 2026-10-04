@@ -1,0 +1,65 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap");
+
+/* Override global font */
+:root {
+  --body-font-family: "Inter", sans-serif !important;
+  --heading-font-family: "Inter", sans-serif !important;
+  --mono-font-family: "Inter", sans-serif !important;
+}
+
+body {
+  border: 5px solid red !important;
+}
+
+/* Remove DataTables/iTables outer box (shadow, border, white background) */
+.dataTables_wrapper,
+.itables_wrapper,
+div.itables-container,
+div.dataTables_container {
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Remove scroll wrapper border + rounded corners */
+.dataTables_wrapper .dataTables_scroll,
+.itables_wrapper .dataTables_scroll {
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+}
+
+/* Remove top and bottom scroll boxes */
+.dataTables_scrollHead,
+.dataTables_scrollBody {
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+/* Remove DataTables default table styling */
+table.dataTable,
+table.dataTable th,
+table.dataTable td {
+  border: none !important;
+  box-shadow: none !important;
+  background: inherit !important;
+}
+
+/* Remove the subtle gray frame Just-the-Docs adds */
+table {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Footnote styling */
+.table-footnote {
+  font-size: 0.1rem;
+  color: #555;
+  margin-top: 4px;
+  margin-left: 2px;
+}

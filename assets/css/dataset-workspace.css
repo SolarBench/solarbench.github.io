@@ -1,0 +1,279 @@
+/* Keep the map and comparison as separate panels. */
+#main-content .dataset-workspace {
+  margin: 20px 0;
+  border: 0;
+  border-radius: 0;
+  overflow: visible;
+}
+#main-content .dataset-workspace > .site-explorer,
+#main-content .dataset-workspace > .site-comparison {
+  margin: 0 !important;
+  border: 1px solid #dce5ed !important;
+  border-radius: 12px !important;
+  overflow: hidden;
+}
+#main-content .dataset-workspace > .site-comparison {
+  margin-top: 16px !important;
+}
+
+/* Give the full-size modality tags room to share a row with the resolution. */
+#main-content .dataset-workspace .explorer-grid {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 440px);
+}
+#main-content .site-data-group.has-resolution-details .site-data-modalities {
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  gap: 8px;
+}
+#main-content .site-data-group.has-resolution-details .modality-tags {
+  flex: 1 1 auto;
+  min-width: 0;
+  flex-wrap: wrap;
+}
+#main-content .site-data-group.has-resolution-details .data-resolution {
+  flex: 0 0 auto;
+  margin-left: 0;
+  white-space: nowrap;
+}
+@media (max-width: 1100px) {
+  #main-content .dataset-workspace .explorer-grid { grid-template-columns: minmax(0, 1fr); }
+}
+
+#main-content .explorer-details .site-title-row {
+  flex-wrap: nowrap;
+  gap: 8px 12px;
+}
+#main-content .explorer-details .site-title-row .site-region {
+  margin-left: auto;
+  white-space: nowrap;
+  font-size: 12px;
+}
+@media (max-width: 700px) {
+  #main-content .explorer-details .site-title-row { flex-wrap: wrap; }
+  #main-content .explorer-details .site-title-row .site-region { margin-left: 0; }
+}
+
+#main-content .explorer-details .available-data-heading {
+  font-size: 18px !important;
+  line-height: 1.35;
+}
+#main-content .explorer-details .site-data-hint {
+  margin: 12px 0 0;
+  color: #637181;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+/* A shorter explorer without changing its controls or information. */
+#main-content .dataset-workspace #solarbench-map { height: 410px; }
+#main-content .dataset-workspace .explorer-toolbar { padding-top: 12px; padding-bottom: 12px; }
+#main-content .dataset-workspace .explorer-details { padding: 18px 22px; }
+#main-content .dataset-workspace .site-facts { margin: 12px 0; }
+#main-content .dataset-workspace .site-facts dt,
+#main-content .dataset-workspace .site-facts dd { padding-top: 8px; padding-bottom: 8px; }
+#main-content .dataset-workspace .site-facts .site-coordinates {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: nowrap;
+  gap: 8px;
+  white-space: nowrap;
+}
+#main-content .dataset-workspace .site-coordinates a {
+  font-size: 12px;
+  white-space: nowrap;
+}
+#main-content .dataset-workspace #solarbench-map { background: #dfe5e9; }
+#main-content .dataset-workspace #solarbench-map .leaflet-control-attribution {
+  font-size: 10px;
+}
+#main-content .dataset-workspace .leaflet-control-fullscreen button {
+  display: block;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: 0;
+  background: #fff;
+  color: #333;
+  font: 22px/30px Arial, sans-serif;
+  cursor: pointer;
+}
+#main-content .dataset-workspace .leaflet-control-fullscreen button:hover {
+  background: #f4f4f4;
+}
+#main-content .dataset-workspace .site-data-group { padding-top: 6px; padding-bottom: 6px; }
+#main-content .dataset-workspace .explorer-legend { padding-top: 10px; padding-bottom: 10px; }
+@media (max-width: 1100px) {
+  #main-content .dataset-workspace #solarbench-map { height: 340px; }
+}
+
+#main-content .site-data-heading .site-data-column-heading {
+  margin-left: auto;
+  color: #637181;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+#main-content .explorer-details .modality-info-trigger {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: help;
+}
+#main-content .explorer-details .modality-info-trigger:focus-visible {
+  outline: 2px solid #084780;
+  outline-offset: 2px;
+}
+#main-content .explorer-details .modality-definition[popover] {
+  width: 180px;
+  max-width: calc(100vw - 32px);
+  padding: 8px 10px;
+  border: 1px solid #dce5ed !important;
+  border-radius: 6px;
+  background: #fff;
+  color: #334455;
+  font: 400 10px/1.4 Arial, sans-serif !important;
+  white-space: normal;
+  box-shadow: none;
+  pointer-events: none;
+}
+
+
+
+/* Match the comparison controls to the map toolbar. */
+#main-content .dataset-workspace .site-comparison .comparison-controls {
+  margin: -16px -22px 12px;
+  padding: 12px 20px;
+  align-items: center;
+  background: #f3f7fb;
+  border-bottom: 1px solid #dce5ed;
+}
+#main-content .dataset-workspace .site-comparison .comparison-controls label {
+  color: #084780;
+  font-size: 14px;
+  font-weight: 600;
+}
+#main-content .dataset-workspace .site-comparison .comparison-controls select {
+  padding: 8px 12px;
+  border-color: #b5c6d5;
+  border-radius: 6px;
+  font: inherit;
+  font-weight: 400;
+  color: #253b50;
+}
+#main-content .dataset-workspace .site-comparison .comparison-description {
+  margin: 10px 0 0;
+}
+#main-content .dataset-workspace .site-comparison .comparison-timeline .comparison-value {
+  font-size: 13px;
+}
+#main-content .dataset-workspace .site-comparison .comparison-timeline .year-tick span {
+  font-size: 12px;
+}
+@media (max-width: 600px) {
+  #main-content .dataset-workspace .site-comparison .comparison-controls {
+    margin: -14px -14px 12px;
+  }
+}
+
+/* Leave enough room above the calendar axis for its year labels. */
+#main-content .dataset-workspace .site-comparison .comparison-timeline .comparison-axis {
+  height: 36px;
+}
+#main-content .dataset-workspace .site-comparison .comparison-timeline .year-tick span {
+  bottom: 10px;
+  line-height: 1.2;
+}
+
+/* Unify the two control bars and separate the map from the comparison. */
+#main-content .dataset-workspace .explorer-toolbar,
+#main-content .dataset-workspace .site-comparison .comparison-controls {
+  gap: 12px;
+  padding: 12px 20px;
+  background: #f3f7fb;
+  border-bottom: 1px solid #dce5ed;
+}
+#main-content .dataset-workspace .explorer-toolbar label,
+#main-content .dataset-workspace .site-comparison .comparison-controls label {
+  color: #084780;
+  font-size: 14px;
+  font-weight: 600;
+}
+#main-content .dataset-workspace .explorer-toolbar select,
+#main-content .dataset-workspace .site-comparison .comparison-controls select {
+  padding: 8px 12px;
+  border: 1px solid #b5c6d5;
+  border-radius: 6px;
+  background: white;
+  color: #253b50;
+  font-size: 14px;
+  font-weight: 400;
+}
+#main-content .dataset-workspace .explorer-legend {
+  padding: 10px 18px;
+  border-bottom: 0;
+}
+
+/* Give numeric values their own readable column. */
+#main-content .dataset-workspace .site-comparison .comparison-numeric .comparison-row {
+  grid-template-columns: 145px minmax(0, 1fr) 165px;
+  column-gap: 20px;
+  padding-right: 16px;
+}
+#main-content .dataset-workspace .site-comparison .comparison-numeric .comparison-value {
+  padding-left: 14px;
+  text-align: right;
+  color: #253b50;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+  #main-content .dataset-workspace .site-comparison .comparison-numeric .comparison-row {
+    grid-template-columns: 105px minmax(0, 1fr);
+    column-gap: 10px;
+    padding-right: 0;
+  }
+  #main-content .dataset-workspace .site-comparison .comparison-numeric .comparison-value {
+    grid-column: 2;
+    padding-left: 0;
+    text-align: left;
+  }
+
+}
+
+/* Use the same value column for durations and numeric metrics. */
+#main-content .dataset-workspace .site-comparison .comparison-timeline .comparison-row {
+  grid-template-columns: 145px minmax(0, 1fr) 165px;
+  column-gap: 20px;
+  padding-right: 16px;
+}
+#main-content .dataset-workspace .site-comparison .comparison-timeline .comparison-value {
+  padding-left: 14px;
+  text-align: right;
+  color: #253b50;
+  font-size: 13px;
+  font-weight: 400;
+}
+#main-content .dataset-workspace .site-comparison .comparison-timeline .comparison-axis {
+  margin-left: 165px;
+  margin-right: 201px;
+}
+@media (max-width: 600px) {
+  #main-content .dataset-workspace .site-comparison .comparison-timeline .comparison-row {
+    grid-template-columns: 105px minmax(0, 1fr);
+    column-gap: 10px;
+    padding-right: 0;
+  }
+  #main-content .dataset-workspace .site-comparison .comparison-timeline .comparison-value {
+    grid-column: 2;
+    padding-left: 0;
+    text-align: left;
+  }
+  #main-content .dataset-workspace .site-comparison .comparison-timeline .comparison-axis {
+    margin-left: 115px;
+    margin-right: 0;
+  }
+}

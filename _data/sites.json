@@ -1,0 +1,1083 @@
+[
+  {
+    "name": "Puy de Dôme (France)",
+    "lat": 45.7742447,
+    "lon": 2.96240064,
+    "start_date": "2015-12-01",
+    "end_date": "2023-08-27",
+    "data": [
+      "Sky images",
+      "Meteorological measurements",
+      "Satellite imagery",
+      "NWP",
+      "Climate reanalysis"
+    ],
+    "label": [
+      "Irradiance"
+    ],
+    "id": "puy-de-dome",
+    "site_name": "Puy de Dôme",
+    "country": "France",
+    "continent": "Europe",
+    "climate": {
+      "koppen_geiger": "Cfb",
+      "status": "confirmed_from_screenshot",
+      "source": "User-provided site classification screenshot",
+      "description": "Temperate oceanic"
+    },
+    "duration_years": 7.7,
+    "coverage_scope": null,
+    "dataset_url": null,
+    "modality_coverage": [],
+    "variability": {
+      "large_ramp_fraction": 0.149,
+      "index": 0.094
+    },
+    "photos": {
+      "overhead": null,
+      "setup": null
+    },
+    "pv_system": null,
+    "solar_radiation": {
+      "mean_w_m2": 150.5,
+      "period": "1980–2020",
+      "source": "ERA5",
+      "method": "Nearest grid cell in supplied ssrd.nc",
+      "grid_latitude": 45.75,
+      "grid_longitude": 3.0
+    },
+    "data_categories": [
+      {
+        "name": "Ground-based observations",
+        "modalities": [
+          "Sky images",
+          "Meteorological measurements",
+          "Irradiance"
+        ],
+        "temporal_resolution": "1–2 min",
+        "resolution_periods": [
+          "2015-12 – 2018-08: 1 min",
+          "2018-10 – 2023-08: 2 min"
+        ],
+        "source_label": "Original dataset",
+        "source_url": "https://www.actris.fr/catalogue/?keywords=%5B%22CO-PDD%22%5D&checkBoxCriteria=%7B%22projects%22%3A%5B%22GROUND_DATA.ACTRIS-FR%22%5D%7D"
+      },
+      {
+        "name": "Remote sensing imagery",
+        "modalities": [
+          "Satellite imagery"
+        ],
+        "temporal_resolution": "5 min",
+        "source_name": "MSG",
+        "access_links": [
+          {
+            "label": "Download tool",
+            "url": "https://github.com/openclimatefix/satellite-consumer"
+          }
+        ],
+        "source_url": "https://user.eumetsat.int/resources/user-guides/eumetsat-data-access-client-eumdac-guide",
+        "source_label": "MSG"
+      },
+      {
+        "name": "Atmospheric model products",
+        "modalities": [
+          "NWP",
+          "Climate reanalysis"
+        ],
+        "temporal_resolution": "1 hour"
+      }
+    ],
+    "sample_counts": {
+      "ground": 981409,
+      "satellite": 716267
+    },
+    "ground_measurements": {
+      "irradiance": [
+        "GHI",
+        "DNI",
+        "DHI"
+      ],
+      "meteorological": [
+        "Air temperature",
+        "Relative humidity",
+        "Pressure",
+        "Wind speed",
+        "Wind direction",
+        "Precipitation"
+      ]
+    }
+  },
+  {
+    "name": "Akwatia (Ghana)",
+    "lat": 6.047167,
+    "lon": -0.797028,
+    "start_date": "2022-04-03",
+    "end_date": "2022-09-24",
+    "data": [
+      "Sky images",
+      "Irradiance",
+      "Satellite imagery",
+      "NWP",
+      "Climate reanalysis"
+    ],
+    "label": [
+      "Irradiance"
+    ],
+    "id": "akwatia",
+    "site_name": "Akwatia",
+    "country": "Ghana",
+    "continent": "Africa",
+    "climate": {
+      "koppen_geiger": "Aw",
+      "status": "confirmed_from_screenshot",
+      "source": "User-provided site classification screenshot",
+      "description": "Tropical savanna with dry winters"
+    },
+    "duration_years": 0.5,
+    "coverage_scope": null,
+    "dataset_url": null,
+    "modality_coverage": [],
+    "variability": {
+      "large_ramp_fraction": 0.194,
+      "index": 0.123
+    },
+    "photos": {
+      "overhead": null,
+      "setup": null
+    },
+    "pv_system": null,
+    "solar_radiation": {
+      "mean_w_m2": 193.4,
+      "period": "1980–2020",
+      "source": "ERA5",
+      "method": "Nearest grid cell in supplied ssrd.nc",
+      "grid_latitude": 6.0,
+      "grid_longitude": 359.25
+    },
+    "data_categories": [
+      {
+        "name": "Ground-based observations",
+        "modalities": [
+          "Sky images",
+          "Irradiance"
+        ],
+        "temporal_resolution": "1 min",
+        "resolution_periods": [],
+        "source_label": "SolarBench paper",
+        "source_url": "https://arxiv.org/abs/2609.06187"
+      },
+      {
+        "name": "Remote sensing imagery",
+        "modalities": [
+          "Satellite imagery"
+        ],
+        "temporal_resolution": "15 min",
+        "source_name": "MSG",
+        "access_links": [
+          {
+            "label": "Download tool",
+            "url": "https://github.com/openclimatefix/satellite-consumer"
+          }
+        ],
+        "source_url": "https://user.eumetsat.int/resources/user-guides/eumetsat-data-access-client-eumdac-guide",
+        "source_label": "MSG"
+      },
+      {
+        "name": "Atmospheric model products",
+        "modalities": [
+          "NWP",
+          "Climate reanalysis"
+        ],
+        "temporal_resolution": "1 hour"
+      }
+    ],
+    "sample_counts": {
+      "ground": 89953,
+      "satellite": 13720
+    },
+    "ground_measurements": {
+      "irradiance": [
+        "GTI"
+      ],
+      "meteorological": []
+    }
+  },
+  {
+    "name": "Kologo (Ghana)",
+    "lat": 10.737222,
+    "lon": -1.077556,
+    "start_date": "2022-04-02",
+    "end_date": "2022-10-02",
+    "data": [
+      "Sky images",
+      "Irradiance",
+      "Satellite imagery",
+      "NWP",
+      "Climate reanalysis"
+    ],
+    "label": [
+      "Irradiance"
+    ],
+    "id": "kologo",
+    "site_name": "Kologo",
+    "country": "Ghana",
+    "continent": "Africa",
+    "climate": {
+      "koppen_geiger": "Aw",
+      "status": "confirmed_from_screenshot",
+      "source": "User-provided site classification screenshot",
+      "description": "Tropical savanna with dry winters"
+    },
+    "duration_years": 0.5,
+    "coverage_scope": null,
+    "dataset_url": null,
+    "modality_coverage": [],
+    "variability": {
+      "large_ramp_fraction": 0.183,
+      "index": 0.097
+    },
+    "photos": {
+      "overhead": null,
+      "setup": null
+    },
+    "pv_system": null,
+    "solar_radiation": {
+      "mean_w_m2": 240.7,
+      "period": "1980–2020",
+      "source": "ERA5",
+      "method": "Nearest grid cell in supplied ssrd.nc",
+      "grid_latitude": 10.75,
+      "grid_longitude": 359.0
+    },
+    "data_categories": [
+      {
+        "name": "Ground-based observations",
+        "modalities": [
+          "Sky images",
+          "Irradiance"
+        ],
+        "temporal_resolution": "1 min",
+        "resolution_periods": [],
+        "source_label": "SolarBench paper",
+        "source_url": "https://arxiv.org/abs/2609.06187"
+      },
+      {
+        "name": "Remote sensing imagery",
+        "modalities": [
+          "Satellite imagery"
+        ],
+        "temporal_resolution": "15 min",
+        "source_name": "MSG",
+        "access_links": [
+          {
+            "label": "Download tool",
+            "url": "https://github.com/openclimatefix/satellite-consumer"
+          }
+        ],
+        "source_url": "https://user.eumetsat.int/resources/user-guides/eumetsat-data-access-client-eumdac-guide",
+        "source_label": "MSG"
+      },
+      {
+        "name": "Atmospheric model products",
+        "modalities": [
+          "NWP",
+          "Climate reanalysis"
+        ],
+        "temporal_resolution": "1 hour"
+      }
+    ],
+    "sample_counts": {
+      "ground": 92182,
+      "satellite": 13882
+    },
+    "ground_measurements": {
+      "irradiance": [
+        "GTI"
+      ],
+      "meteorological": []
+    }
+  },
+  {
+    "name": "Sankt Augustin (Germany)",
+    "lat": 50.779376,
+    "lon": 7.182599,
+    "start_date": "2020-11-19",
+    "end_date": "2022-11-13",
+    "data": [
+      "Sky images",
+      "Irradiance",
+      "Satellite imagery",
+      "NWP",
+      "Climate reanalysis"
+    ],
+    "label": [
+      "Irradiance"
+    ],
+    "id": "sankt-augustin",
+    "site_name": "Sankt Augustin",
+    "country": "Germany",
+    "continent": "Europe",
+    "climate": {
+      "koppen_geiger": "Cfb",
+      "status": "confirmed_from_screenshot",
+      "source": "User-provided site classification screenshot",
+      "description": "Temperate oceanic"
+    },
+    "duration_years": 2.0,
+    "coverage_scope": null,
+    "dataset_url": null,
+    "modality_coverage": [],
+    "variability": {
+      "large_ramp_fraction": 0.237,
+      "index": 0.158
+    },
+    "photos": {
+      "overhead": null,
+      "setup": null
+    },
+    "pv_system": null,
+    "solar_radiation": {
+      "mean_w_m2": 124.1,
+      "period": "1980–2020",
+      "source": "ERA5",
+      "method": "Nearest grid cell in supplied ssrd.nc",
+      "grid_latitude": 50.75,
+      "grid_longitude": 7.25
+    },
+    "data_categories": [
+      {
+        "name": "Ground-based observations",
+        "modalities": [
+          "Sky images",
+          "Irradiance"
+        ],
+        "temporal_resolution": "1 min",
+        "resolution_periods": [],
+        "source_label": "SolarBench paper",
+        "source_url": "https://arxiv.org/abs/2609.06187"
+      },
+      {
+        "name": "Remote sensing imagery",
+        "modalities": [
+          "Satellite imagery"
+        ],
+        "temporal_resolution": "5 min",
+        "source_name": "MSG",
+        "access_links": [
+          {
+            "label": "Download tool",
+            "url": "https://github.com/openclimatefix/satellite-consumer"
+          }
+        ],
+        "source_url": "https://user.eumetsat.int/resources/user-guides/eumetsat-data-access-client-eumdac-guide",
+        "source_label": "MSG"
+      },
+      {
+        "name": "Atmospheric model products",
+        "modalities": [
+          "NWP",
+          "Climate reanalysis"
+        ],
+        "temporal_resolution": "1 hour"
+      }
+    ],
+    "sample_counts": {
+      "ground": 442788,
+      "satellite": 39143
+    },
+    "ground_measurements": {
+      "irradiance": [
+        "GHI",
+        "DNI",
+        "DHI"
+      ],
+      "meteorological": []
+    }
+  },
+  {
+    "name": "Hong Kong (China)",
+    "lat": 22.3047,
+    "lon": 114.1803,
+    "start_date": "2023-02-18",
+    "end_date": "2023-12-30",
+    "data": [
+      "Sky images",
+      "Meteorological measurements",
+      "Satellite imagery",
+      "NWP",
+      "Climate reanalysis"
+    ],
+    "label": [
+      "Irradiance"
+    ],
+    "id": "hong-kong",
+    "site_name": "Hong Kong",
+    "country": "China",
+    "continent": "Asia",
+    "climate": {
+      "koppen_geiger": "Cwa",
+      "status": "confirmed_from_screenshot",
+      "source": "User-provided site classification screenshot",
+      "description": "Dry-winter humid subtropical"
+    },
+    "duration_years": 0.9,
+    "coverage_scope": null,
+    "dataset_url": null,
+    "modality_coverage": [],
+    "variability": {
+      "large_ramp_fraction": 0.188,
+      "index": 0.122
+    },
+    "photos": {
+      "overhead": null,
+      "setup": null
+    },
+    "pv_system": null,
+    "solar_radiation": {
+      "mean_w_m2": 188.9,
+      "period": "1980–2020",
+      "source": "ERA5",
+      "method": "Nearest grid cell in supplied ssrd.nc",
+      "grid_latitude": 22.25,
+      "grid_longitude": 114.25
+    },
+    "data_categories": [
+      {
+        "name": "Ground-based observations",
+        "modalities": [
+          "Sky images",
+          "Meteorological measurements",
+          "Irradiance"
+        ],
+        "temporal_resolution": "1 min",
+        "resolution_periods": [],
+        "source_label": "SolarBench paper",
+        "source_url": "https://arxiv.org/abs/2609.06187"
+      },
+      {
+        "name": "Remote sensing imagery",
+        "modalities": [
+          "Satellite imagery"
+        ],
+        "temporal_resolution": "10 min",
+        "source_name": "Himawari-9",
+        "source_url": "https://noaa-himawari9.s3.amazonaws.com/index.html#AHI-L1b-FLDK/",
+        "source_label": "Himawari-9"
+      },
+      {
+        "name": "Atmospheric model products",
+        "modalities": [
+          "NWP",
+          "Climate reanalysis"
+        ],
+        "temporal_resolution": "1 hour"
+      }
+    ],
+    "sample_counts": {
+      "ground": 223812,
+      "satellite": 29305
+    },
+    "ground_measurements": {
+      "irradiance": [
+        "GHI",
+        "DHI"
+      ],
+      "meteorological": [
+        "Air temperature",
+        "Relative humidity",
+        "Pressure",
+        "Wind speed",
+        "Wind direction"
+      ]
+    }
+  },
+  {
+    "name": "Paris (France)",
+    "lat": 48.713,
+    "lon": 2.208,
+    "start_date": "2015-01-02",
+    "end_date": "2022-12-31",
+    "data": [
+      "Sky images",
+      "Meteorological measurements",
+      "Satellite imagery",
+      "NWP",
+      "Climate reanalysis"
+    ],
+    "label": [
+      "Irradiance"
+    ],
+    "id": "paris",
+    "site_name": "Paris",
+    "country": "France",
+    "continent": "Europe",
+    "climate": {
+      "koppen_geiger": "Cfb",
+      "status": "confirmed_from_screenshot",
+      "source": "User-provided site classification screenshot",
+      "description": "Temperate oceanic"
+    },
+    "duration_years": 8.0,
+    "coverage_scope": null,
+    "dataset_url": null,
+    "modality_coverage": [],
+    "variability": {
+      "large_ramp_fraction": 0.177,
+      "index": 0.128
+    },
+    "photos": {
+      "overhead": null,
+      "setup": null
+    },
+    "pv_system": null,
+    "solar_radiation": {
+      "mean_w_m2": 133.7,
+      "period": "1980–2020",
+      "source": "ERA5",
+      "method": "Nearest grid cell in supplied ssrd.nc",
+      "grid_latitude": 48.75,
+      "grid_longitude": 2.25
+    },
+    "data_categories": [
+      {
+        "name": "Ground-based observations",
+        "modalities": [
+          "Sky images",
+          "Meteorological measurements",
+          "Irradiance"
+        ],
+        "temporal_resolution": "1–2 min",
+        "resolution_periods": [
+          "2015-01 – 2017-12: 1 min",
+          "2018-01 – 2022-12: 2 min"
+        ],
+        "source_label": "Original dataset",
+        "source_url": "https://sirta.ipsl.fr/data-overview/"
+      },
+      {
+        "name": "Remote sensing imagery",
+        "modalities": [
+          "Satellite imagery"
+        ],
+        "temporal_resolution": "5 min",
+        "source_name": "MSG",
+        "access_links": [
+          {
+            "label": "Download tool",
+            "url": "https://github.com/openclimatefix/satellite-consumer"
+          }
+        ],
+        "source_url": "https://user.eumetsat.int/resources/user-guides/eumetsat-data-access-client-eumdac-guide",
+        "source_label": "MSG"
+      },
+      {
+        "name": "Atmospheric model products",
+        "modalities": [
+          "NWP",
+          "Climate reanalysis"
+        ],
+        "temporal_resolution": "1 hour"
+      }
+    ],
+    "sample_counts": {
+      "ground": 1368060,
+      "satellite": 742522
+    },
+    "ground_measurements": {
+      "irradiance": [
+        "GHI",
+        "GHI_std",
+        "GHI_min",
+        "GHI_max",
+        "DNI",
+        "DNI_std",
+        "DNI_min",
+        "DNI_max",
+        "DHI",
+        "DHI_std",
+        "DHI_min",
+        "DHI_max",
+        "LWd_max"
+      ],
+      "meteorological": [
+        "Air temperature",
+        "Relative humidity",
+        "Pressure"
+      ],
+      "irradiance_summary": "GHI, DNI, DHI (+ std/min/max); LWd_max"
+    }
+  },
+  {
+    "name": "Stanford (California, USA)",
+    "lat": 37.427,
+    "lon": -122.174,
+    "start_date": "2017-03-09",
+    "end_date": "2019-10-26",
+    "data": [
+      "Sky images",
+      "PV output",
+      "NWP",
+      "Climate reanalysis"
+    ],
+    "label": [
+      "PV output"
+    ],
+    "id": "stanford",
+    "site_name": "Stanford",
+    "country": "United States",
+    "continent": "North America",
+    "climate": {
+      "koppen_geiger": "Csb",
+      "status": "confirmed_from_screenshot",
+      "source": "User-provided site classification screenshot",
+      "description": "Warm-summer Mediterranean"
+    },
+    "duration_years": 2.6,
+    "coverage_scope": null,
+    "dataset_url": null,
+    "modality_coverage": [],
+    "variability": {
+      "large_ramp_fraction": 0.144,
+      "index": 0.106
+    },
+    "photos": {
+      "overhead": null,
+      "setup": null
+    },
+    "pv_system": {
+      "capacity_kw": 30,
+      "configuration": "Rooftop installation",
+      "source": "SolarBench manuscript, transfer-learning experiments"
+    },
+    "solar_radiation": {
+      "mean_w_m2": 212.9,
+      "period": "1980–2020",
+      "source": "ERA5",
+      "method": "Nearest grid cell in supplied ssrd.nc",
+      "grid_latitude": 37.5,
+      "grid_longitude": 237.75
+    },
+    "data_categories": [
+      {
+        "name": "Ground-based observations",
+        "modalities": [
+          "Sky images",
+          "PV output"
+        ],
+        "temporal_resolution": "1 min",
+        "resolution_periods": [],
+        "source_label": "Original dataset",
+        "source_url": "https://www.sciencedirect.com/science/article/abs/pii/S0038092X23002037"
+      },
+      {
+        "name": "Atmospheric model products",
+        "modalities": [
+          "NWP",
+          "Climate reanalysis"
+        ],
+        "temporal_resolution": "1 hour"
+      }
+    ],
+    "sample_counts": {
+      "ground": 363375,
+      "satellite": null
+    },
+    "ground_measurements": {
+      "irradiance": [],
+      "meteorological": []
+    }
+  },
+  {
+    "name": "Golden (Colorado, USA)",
+    "lat": 39.742,
+    "lon": -105.18,
+    "start_date": "2021-04-17",
+    "end_date": "2024-03-22",
+    "data": [
+      "Sky images",
+      "Meteorological measurements",
+      "Satellite imagery",
+      "NWP",
+      "Climate reanalysis"
+    ],
+    "label": [
+      "Irradiance"
+    ],
+    "id": "golden",
+    "site_name": "Golden",
+    "country": "United States",
+    "continent": "North America",
+    "climate": {
+      "koppen_geiger": "Dfb",
+      "status": "confirmed_from_screenshot",
+      "source": "User-provided site classification screenshot",
+      "description": "Warm-summer humid continental"
+    },
+    "duration_years": 2.9,
+    "coverage_scope": null,
+    "dataset_url": null,
+    "modality_coverage": [],
+    "variability": {
+      "large_ramp_fraction": 0.137,
+      "index": 0.095
+    },
+    "photos": {
+      "overhead": null,
+      "setup": null
+    },
+    "pv_system": null,
+    "solar_radiation": {
+      "mean_w_m2": 216.0,
+      "period": "1980–2020",
+      "source": "ERA5",
+      "method": "Nearest grid cell in supplied ssrd.nc",
+      "grid_latitude": 39.75,
+      "grid_longitude": 254.75
+    },
+    "data_categories": [
+      {
+        "name": "Ground-based observations",
+        "modalities": [
+          "Sky images",
+          "Meteorological measurements",
+          "Irradiance"
+        ],
+        "temporal_resolution": "1 min",
+        "resolution_periods": [],
+        "source_label": "Original dataset",
+        "source_url": "https://midcdmz.nlr.gov/apps/sitehome.pl?site=BMS"
+      },
+      {
+        "name": "Remote sensing imagery",
+        "modalities": [
+          "Satellite imagery"
+        ],
+        "temporal_resolution": "5 min",
+        "source_name": "GOES-16",
+        "source_url": "https://noaa-goes16.s3.amazonaws.com/index.html#ABI-L1b-RadC/",
+        "source_label": "GOES-16"
+      },
+      {
+        "name": "Atmospheric model products",
+        "modalities": [
+          "NWP",
+          "Climate reanalysis"
+        ],
+        "temporal_resolution": "1 hour"
+      }
+    ],
+    "sample_counts": {
+      "ground": 367878,
+      "satellite": 118598
+    },
+    "ground_measurements": {
+      "irradiance": [
+        "GHI",
+        "DNI",
+        "DHI"
+      ],
+      "meteorological": [
+        "Air temperature",
+        "Relative humidity",
+        "Pressure",
+        "Wind speed",
+        "Wind direction",
+        "Max wind speed",
+        "Precipitation"
+      ]
+    }
+  },
+  {
+    "name": "Folsom (California, USA)",
+    "lat": 38.642,
+    "lon": -121.148,
+    "start_date": "2014-01-02",
+    "end_date": "2016-12-30",
+    "data": [
+      "Sky images",
+      "Meteorological measurements",
+      "NWP",
+      "Climate reanalysis"
+    ],
+    "label": [
+      "Irradiance"
+    ],
+    "id": "folsom",
+    "site_name": "Folsom",
+    "country": "United States",
+    "continent": "North America",
+    "climate": {
+      "koppen_geiger": "Csa",
+      "status": "confirmed_from_screenshot",
+      "source": "User-provided site classification screenshot",
+      "description": "Hot-summer Mediterranean"
+    },
+    "duration_years": 3.0,
+    "coverage_scope": null,
+    "dataset_url": null,
+    "modality_coverage": [],
+    "variability": {
+      "large_ramp_fraction": 0.168,
+      "index": 0.114
+    },
+    "photos": {
+      "overhead": null,
+      "setup": null
+    },
+    "pv_system": null,
+    "solar_radiation": {
+      "mean_w_m2": 216.4,
+      "period": "1980–2020",
+      "source": "ERA5",
+      "method": "Nearest grid cell in supplied ssrd.nc",
+      "grid_latitude": 38.75,
+      "grid_longitude": 238.75
+    },
+    "data_categories": [
+      {
+        "name": "Ground-based observations",
+        "modalities": [
+          "Sky images",
+          "Meteorological measurements",
+          "Irradiance"
+        ],
+        "temporal_resolution": "1 min",
+        "resolution_periods": [],
+        "source_label": "Original dataset",
+        "source_url": "https://pubs.aip.org/aip/jrse/article/11/3/036102/284906/A-comprehensive-dataset-for-the-accelerated"
+      },
+      {
+        "name": "Atmospheric model products",
+        "modalities": [
+          "NWP",
+          "Climate reanalysis"
+        ],
+        "temporal_resolution": "1 hour"
+      }
+    ],
+    "sample_counts": {
+      "ground": 765140,
+      "satellite": null
+    },
+    "ground_measurements": {
+      "irradiance": [
+        "GHI",
+        "DNI",
+        "DHI"
+      ],
+      "meteorological": [
+        "Air temperature",
+        "Relative humidity",
+        "Pressure",
+        "Wind speed",
+        "Wind direction",
+        "Max wind speed",
+        "Precipitation"
+      ]
+    }
+  },
+  {
+    "name": "Nottingham (UK)",
+    "lat": 52.9521294,
+    "lon": -1.1843382,
+    "start_date": "2023-01-05",
+    "end_date": "2023-12-31",
+    "data": [
+      "Sky images",
+      "Meteorological measurements",
+      "Satellite imagery",
+      "NWP",
+      "Climate reanalysis"
+    ],
+    "label": [
+      "Irradiance"
+    ],
+    "id": "nottingham",
+    "site_name": "Nottingham",
+    "country": "United Kingdom",
+    "continent": "Europe",
+    "climate": {
+      "koppen_geiger": "Cfb",
+      "status": "confirmed_from_screenshot",
+      "source": "User-provided site classification screenshot",
+      "description": "Temperate oceanic"
+    },
+    "duration_years": 1.0,
+    "coverage_scope": null,
+    "dataset_url": null,
+    "modality_coverage": [],
+    "variability": {
+      "large_ramp_fraction": 0.198,
+      "index": 0.115
+    },
+    "photos": {
+      "overhead": null,
+      "setup": null
+    },
+    "pv_system": null,
+    "solar_radiation": {
+      "mean_w_m2": 114.5,
+      "period": "1980–2020",
+      "source": "ERA5",
+      "method": "Nearest grid cell in supplied ssrd.nc",
+      "grid_latitude": 53.0,
+      "grid_longitude": 358.75
+    },
+    "data_categories": [
+      {
+        "name": "Ground-based observations",
+        "modalities": [
+          "Sky images",
+          "Meteorological measurements",
+          "Irradiance"
+        ],
+        "temporal_resolution": "1 min",
+        "resolution_periods": [],
+        "source_label": "SolarBench paper",
+        "source_url": "https://arxiv.org/abs/2609.06187"
+      },
+      {
+        "name": "Remote sensing imagery",
+        "modalities": [
+          "Satellite imagery"
+        ],
+        "temporal_resolution": "5 min",
+        "source_name": "MSG",
+        "access_links": [
+          {
+            "label": "Download tool",
+            "url": "https://github.com/openclimatefix/satellite-consumer"
+          }
+        ],
+        "source_url": "https://user.eumetsat.int/resources/user-guides/eumetsat-data-access-client-eumdac-guide",
+        "source_label": "MSG"
+      },
+      {
+        "name": "Atmospheric model products",
+        "modalities": [
+          "NWP",
+          "Climate reanalysis"
+        ],
+        "temporal_resolution": "1 hour"
+      }
+    ],
+    "sample_counts": {
+      "ground": 68237,
+      "satellite": 89088
+    },
+    "ground_measurements": {
+      "irradiance": [
+        "GHI",
+        "DNI",
+        "DHI",
+        "GHI_min_avg",
+        "DNI_min_avg",
+        "DHI_min_avg",
+        "Clear-sky GHI",
+        "Clear-sky DNI",
+        "Clear-sky DHI"
+      ],
+      "meteorological": [
+        "Air temperature",
+        "Relative humidity",
+        "Pressure",
+        "Wind speed",
+        "Wind direction",
+        "Solar zenith angle",
+        "Solar azimuth angle"
+      ],
+      "irradiance_summary": "GHI, DNI, DHI (+ min avg and clear-sky)"
+    }
+  },
+  {
+    "name": "Gatton (Australia)",
+    "lat": -27.559259701093,
+    "lon": 152.34265112022,
+    "start_date": "2020-01-23",
+    "end_date": "2020-05-06",
+    "data": [
+      "Sky images",
+      "PV output",
+      "Satellite imagery",
+      "NWP",
+      "Climate reanalysis"
+    ],
+    "label": [
+      "PV output"
+    ],
+    "id": "gatton",
+    "site_name": "Gatton",
+    "country": "Australia",
+    "continent": "Oceania",
+    "climate": {
+      "koppen_geiger": "Cfa",
+      "status": "confirmed_from_screenshot",
+      "source": "User-provided site classification screenshot",
+      "description": "Humid subtropical"
+    },
+    "duration_years": 0.3,
+    "coverage_scope": null,
+    "dataset_url": null,
+    "modality_coverage": [],
+    "variability": {
+      "large_ramp_fraction": 0.217,
+      "index": 0.141
+    },
+    "photos": {
+      "overhead": null,
+      "setup": null
+    },
+    "pv_system": {
+      "capacity_kw": 3275,
+      "configuration": "Research facility with multiple PV array configurations",
+      "source": "SolarBench manuscript, transfer-learning experiments"
+    },
+    "solar_radiation": {
+      "mean_w_m2": 207.7,
+      "period": "1980–2020",
+      "source": "ERA5",
+      "method": "Nearest grid cell in supplied ssrd.nc",
+      "grid_latitude": -27.5,
+      "grid_longitude": 152.25
+    },
+    "data_categories": [
+      {
+        "name": "Ground-based observations",
+        "modalities": [
+          "Sky images",
+          "PV output"
+        ],
+        "temporal_resolution": "1 min",
+        "resolution_periods": [],
+        "source_label": "Original dataset",
+        "source_url": "https://espace.library.uq.edu.au/view/UQ:bd7e108"
+      },
+      {
+        "name": "Remote sensing imagery",
+        "modalities": [
+          "Satellite imagery"
+        ],
+        "temporal_resolution": "10 min",
+        "source_name": "Himawari-8",
+        "source_url": "https://noaa-himawari8.s3.amazonaws.com/index.html#AHI-L1b-FLDK/",
+        "source_label": "Himawari-8"
+      },
+      {
+        "name": "Atmospheric model products",
+        "modalities": [
+          "NWP",
+          "Climate reanalysis"
+        ],
+        "temporal_resolution": "1 hour"
+      }
+    ],
+    "sample_counts": {
+      "ground": 69347,
+      "satellite": 9833
+    },
+    "ground_measurements": {
+      "irradiance": [],
+      "meteorological": []
+    }
+  }
+]

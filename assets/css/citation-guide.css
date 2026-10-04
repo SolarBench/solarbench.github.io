@@ -1,0 +1,48 @@
+.main-content .citation-guide h2 {
+  margin-top: 36px;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #dce5ed;
+}
+.main-content .citation-guide h3 {
+  margin-top: 28px;
+  margin-bottom: 14px;
+  padding-bottom: 7px;
+  border-bottom: 1px solid #dce5ed;
+  color: #27262b;
+  font-weight: 600;
+}
+.main-content .citation-guide h4 {
+  margin-top: 26px;
+  margin-bottom: 8px;
+  font-size: 17px !important;
+  font-weight: 500;
+  line-height: 1.45;
+  text-transform: none;
+  letter-spacing: normal;
+}
+.main-content .citation-guide h4 a:not(.anchor-heading) {
+  font-size: 13px;
+  font-weight: 400;
+}
+.main-content .citation-guide p {
+  margin-top: 8px;
+  margin-bottom: 10px;
+}
+.main-content .citation-guide details {
+  margin: 6px 0 18px;
+}
+.main-content .citation-guide summary {
+  width: fit-content;
+  color: inherit;
+  font-size: 1em;
+  cursor: pointer;
+  padding: 3px 0;
+}
+.main-content .citation-guide summary:focus-visible {
+  outline: 2px solid #084780;
+  outline-offset: 3px;
+}
+.main-content .citation-guide details[open] summary {
+  margin-bottom: 8px;
+}

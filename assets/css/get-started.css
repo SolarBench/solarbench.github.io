@@ -1,0 +1,14 @@
+#main-content .notebook-embed {
+  display: block;
+  width: 100%;
+  height: min(80vh, 900px);
+  min-height: 600px;
+  margin: 1.25rem 0 2rem;
+  border: 1px solid #dce5ed;
+  border-radius: 8px;
+  background: #fff;
+}
+
+@media (max-width: 600px) {
+  #main-content .notebook-embed { min-height: 480px; }
+}

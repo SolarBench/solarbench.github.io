@@ -1,0 +1,49 @@
+{
+  "source_file": "assets/data/ssrd.nc",
+  "projection": "EPSG:3857",
+  "coordinates": [
+    [
+      -180,
+      85.05112878
+    ],
+    [
+      180,
+      85.05112878
+    ],
+    [
+      180,
+      -85.05112878
+    ],
+    [
+      -180,
+      -85.05112878
+    ]
+  ],
+  "color_range": [
+    50,
+    325
+  ],
+  "color_boundaries": [
+    50,
+    75,
+    100,
+    125,
+    150,
+    175,
+    200,
+    225,
+    250,
+    275,
+    300,
+    325
+  ],
+  "colormap": "OrRd",
+  "units": "W/m\u00b2",
+  "averaging_period": "1980\u20132020",
+  "source": "ERA5",
+  "land_mask": "Natural Earth 1:50m countries",
+  "native_range": [
+    60.37913513183594,
+    309.56591796875
+  ]
+}

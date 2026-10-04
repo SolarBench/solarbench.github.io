@@ -1,0 +1,13 @@
+/* Shared section dividers on every content page. */
+#main-content h2 {
+  color: #084780 !important;
+  padding-bottom: 8px !important;
+  border-bottom: 1px solid #dce5ed !important;
+}
+
+#main-content h3,
+#main-content h4,
+#main-content h5,
+#main-content h6 {
+  color: #27262b;
+}

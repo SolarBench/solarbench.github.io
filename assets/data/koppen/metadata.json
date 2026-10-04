@@ -1,0 +1,16 @@
+{
+  "source_file": "assets/data/koppen_geiger_tif.zip",
+  "archive_member": "1991_2020/koppen_geiger_0p00833333.tif",
+  "period": "1991\u20132020",
+  "resolution_degrees": 0.008333333333333333,
+  "display_size_pixels": [
+    2880,
+    2880
+  ],
+  "projection": "EPSG:3857",
+  "resampling": "nearest neighbor",
+  "missing_cells": "transparent",
+  "source_attribution": "Beck et al. (2023), Scientific Data 10, 724",
+  "classes": 30,
+  "palette": "User-supplied colors; As omitted because absent from source"
+}

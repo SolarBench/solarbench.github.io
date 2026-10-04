@@ -1,0 +1,24 @@
+<section class="site-comparison" aria-label="Compare datasets">
+  <div class="comparison-controls">
+    <label>Compare
+      <select id="comparison-feature">
+        <option value="radiation">Mean solar radiation</option>
+        <option value="variability">Variability index</option>
+        <option value="ramps">% of large ramps</option>
+        <option value="span">Observation span</option>
+        <option value="samples">Number of samples</option>
+      </select>
+    </label>
+    <label id="comparison-sample-control" hidden>Data category
+      <select id="comparison-sample-category"><option value="satellite">Satellite imagery</option><option value="ground">Ground-based observations</option></select>
+    </label>
+    <label>Order
+      <select id="comparison-order"><option value="name">Site name (A–Z)</option><option value="descending">Highest first</option><option value="ascending">Lowest first</option></select>
+    </label>
+  </div>
+  <div id="comparison-chart" aria-live="polite" aria-atomic="true"></div>
+  <p id="comparison-description" class="comparison-description" hidden></p>
+  <noscript>Enable JavaScript to compare dataset characteristics.</noscript>
+</section>
+<script id="comparison-data" type="application/json">{{ site.data.sites | jsonify }}</script>
+<script src="{{ '/assets/js/site-comparison.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>

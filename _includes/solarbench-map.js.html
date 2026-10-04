@@ -1,0 +1,190 @@
+{% assign radiation_version = site.time | date: '%s' | append: '-land-1' %}
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.metric-info-button, .modality-info-trigger').forEach(button => {
+    const bubble = document.getElementById(button.getAttribute('data-tooltip'));
+    function positionBubble() {
+      const anchor = button.getBoundingClientRect();
+      const width = bubble.offsetWidth;
+      const height = bubble.offsetHeight;
+      let left = anchor.left - width - 6;
+      if (left < 8) left = anchor.right + 6;
+      bubble.style.left = Math.max(8, left) + 'px';
+      bubble.style.top = Math.max(8, Math.min(anchor.top, window.innerHeight - height - 8)) + 'px';
+    }
+    button.addEventListener('mouseenter', () => bubble.showPopover());
+    button.addEventListener('mouseleave', () => bubble.hidePopover());
+    button.addEventListener('focus', () => bubble.showPopover());
+    button.addEventListener('blur', () => bubble.hidePopover());
+    button.addEventListener('keydown', event => { if (event.key === 'Escape') bubble.hidePopover(); });
+    if (button.classList.contains('modality-info-trigger')) {
+      button.addEventListener('click', () => {
+        if (bubble.matches(':popover-open')) bubble.hidePopover();
+        else bubble.showPopover();
+      });
+    }
+    bubble.addEventListener('toggle', event => {
+      if (event.newState === 'open') positionBubble();
+    });
+    window.addEventListener('resize', () => { if (bubble.matches(':popover-open')) positionBubble(); });
+    window.addEventListener('scroll', () => { if (bubble.matches(':popover-open')) positionBubble(); }, true);
+  });
+  const sites = {{ site.data.sites | jsonify }};
+  const select = document.getElementById('site-select');
+  const status = document.getElementById('map-status');
+  const reset = document.getElementById('map-reset');
+  const layerSelect = document.getElementById('map-layer');
+  const radiationLegend = document.getElementById('radiation-legend');
+  const koppenLegend = document.getElementById('koppen-legend');
+  const markers = new Map();
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let map;
+  function chooseSite(id, navigate = true) {
+    const site = sites.find(item => item.id === id);
+    if (!site) return;
+    select.value = id;
+    document.querySelectorAll('.site-detail').forEach(panel => {
+      panel.hidden = panel.id !== 'detail-' + id;
+    });
+    markers.forEach((marker, key) => {
+      const active = key === id;
+      const element = marker.getElement();
+      element.classList.toggle('is-selected', active);
+      element.setAttribute('aria-pressed', String(active));
+      marker.setZIndexOffset(active ? 1000 : 0);
+    });
+    if (navigate && map) map.flyTo([site.lat, site.lon], 4.5, {animate: !reducedMotion, duration: 1.1});
+  }
+  select.addEventListener('change', () => chooseSite(select.value));
+  function showAll() {
+    if (!map) return;
+    const bounds = L.latLngBounds(sites.map(site => [site.lat, site.lon]));
+    map.fitBounds(bounds, {padding: [45, 45], maxZoom: 2, animate: !reducedMotion});
+  }
+  reset.addEventListener('click', showAll);
+  function mapUnavailable() {
+    status.hidden = false;
+    status.textContent = 'Map unavailable. Use the site selector to explore the dataset details.';
+    reset.disabled = true;
+  }
+  chooseSite(select.value, false);
+  if (typeof L === 'undefined') { mapUnavailable(); return; }
+  try {
+    const worldBounds = L.latLngBounds([[-85.05112878, -180], [85.05112878, 180]]);
+    map = L.map('solarbench-map', {
+      zoomControl: false,
+      scrollWheelZoom: false,
+      preferCanvas: true,
+      zoomSnap: 0.25,
+      minZoom: 0,
+      maxZoom: 8,
+      maxBounds: worldBounds,
+      maxBoundsViscosity: 0.8
+    });
+    map.setView([0, 0], 1);
+    map.createPane('land-pane').style.zIndex = 250;
+    map.createPane('data-pane').style.zIndex = 350;
+    map.createPane('border-pane').style.zIndex = 450;
+    L.control.zoom({position: 'topright'}).addTo(map);
+    const FullscreenControl = L.Control.extend({
+      options: {position: 'topright'},
+      onAdd() {
+        const container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-fullscreen');
+        const button = L.DomUtil.create('button', '', container);
+        button.type = 'button';
+        button.setAttribute('aria-label', 'Toggle map fullscreen');
+        button.textContent = '⛶';
+        L.DomEvent.disableClickPropagation(container);
+        L.DomEvent.on(button, 'click', event => {
+          L.DomEvent.stop(event);
+          const element = map.getContainer();
+          if (document.fullscreenElement) document.exitFullscreen();
+          else element.requestFullscreen();
+        });
+        return container;
+      }
+    });
+    map.addControl(new FullscreenControl());
+    document.addEventListener('fullscreenchange', () => map.invalidateSize());
+    map.attributionControl.addAttribution('Map data: Natural Earth');
+
+    const radiation = L.imageOverlay(
+      {{ '/assets/data/solar_radiation/ssrd-mercator.png' | relative_url | append: '?v=' | append: radiation_version | jsonify }},
+      worldBounds,
+      {pane: 'data-pane', attribution: 'ERA5 · 1980–2020 mean'}
+    ).addTo(map);
+    const climate = L.imageOverlay(
+      {{ '/assets/data/koppen/koppen-mercator.png' | relative_url | append: '?v=1991-2020-geotiff' | jsonify }},
+      worldBounds,
+      {pane: 'data-pane', attribution: 'Köppen–Geiger · Beck et al. (2023)'}
+    );
+    function updateLayer() {
+      const showRadiation = layerSelect.value === 'radiation';
+      if (showRadiation) {
+        map.removeLayer(climate);
+        radiation.addTo(map);
+      } else {
+        map.removeLayer(radiation);
+        climate.addTo(map);
+      }
+      radiationLegend.hidden = !showRadiation;
+      koppenLegend.hidden = showRadiation;
+    }
+    layerSelect.addEventListener('change', updateLayer);
+    layerSelect.disabled = false;
+    updateLayer();
+    reset.disabled = false;
+    status.hidden = true;
+    status.textContent = '';
+
+    fetch({{ '/assets/data/natural_earth/countries.geojson' | relative_url | jsonify }})
+      .then(response => {
+        if (!response.ok) throw new Error('Country geometry unavailable');
+        return response.json();
+      })
+      .then(countries => {
+        L.geoJSON(countries, {
+          pane: 'land-pane',
+          style: {color: '#c4cdd6', weight: 0.6, fillColor: '#f7f8fa', fillOpacity: 1},
+          interactive: false
+        }).addTo(map);
+        L.geoJSON(countries, {
+          pane: 'border-pane',
+          style: {color: '#d5dde4', weight: 0.7, fill: false},
+          interactive: false
+        }).addTo(map);
+      })
+      .catch(() => {
+        status.hidden = false;
+        status.textContent = 'Country boundaries are temporarily unavailable.';
+      });
+
+    sites.forEach(site => {
+      const icon = L.divIcon({
+        className: 'site-marker ' + (site.label.includes('PV output') ? 'target-pv' : 'target-irradiance'),
+        iconSize: [18, 18]
+      });
+      const marker = L.marker([site.lat, site.lon], {icon, keyboard: false}).addTo(map);
+      const element = marker.getElement();
+      element.setAttribute('role', 'button');
+      element.setAttribute('tabindex', '0');
+      element.setAttribute('aria-label', site.name + ': ' + site.label.join(', '));
+      element.setAttribute('title', site.name);
+      marker.on('click', () => chooseSite(site.id));
+      element.addEventListener('keydown', event => {
+        if (event.key !== 'Enter' && event.key !== ' ') return;
+        event.preventDefault();
+        event.stopPropagation();
+        chooseSite(site.id);
+      });
+      markers.set(site.id, marker);
+    });
+    chooseSite(select.value, false);
+    showAll();
+    if ('ResizeObserver' in window) new ResizeObserver(() => map.invalidateSize()).observe(map.getContainer());
+  } catch (error) {
+    console.error('SolarBench map failed to initialize:', error);
+    mapUnavailable();
+  }
+});
+</script>

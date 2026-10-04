@@ -1,0 +1,5 @@
+Natural Earth 1:50m Admin 0 countries (public domain)
+https://naturalearth.s3.amazonaws.com/50m_cultural/ne_50m_admin_0_countries.zip
+https://www.naturalearthdata.com/about/terms-of-use/
+
+The hosted GeoJSON retains country geometry only, omits Antarctica (outside this map's display bounds), simplifies shapes at 0.02 degrees, and rounds coordinates to 4 decimal places.
