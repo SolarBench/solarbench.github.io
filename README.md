@@ -16,6 +16,4 @@ Open `http://127.0.0.1:4000/`. To test the published path, run `bundle exec jeky
 
 In the repository's **Settings → Pages**, set **Build and deployment → Source** to **GitHub Actions**. The workflow in `.github/workflows/pages.yml` builds and deploys on pushes to `main`. Check that the repository visibility and all public-facing content are ready before pushing release changes.
 
-For future contributions, make changes on a branch and open a pull request to `main` so they can be reviewed and checked before deployment. The maintainer may continue working directly on `main` while developing the initial site.
-
-The interactive map uses Leaflet and locally hosted Natural Earth geography, solar-radiation imagery, and climate imagery. Each site links to Google Maps for optional satellite inspection. The public website does not use a Mapbox token or Mapbox services.
+For future contributions, make changes on a branch and open a pull request to `main` so they can be reviewed and checked before deployment.

@@ -3,3 +3,15 @@ https://naturalearth.s3.amazonaws.com/50m_cultural/ne_50m_admin_0_countries.zip
 https://www.naturalearthdata.com/about/terms-of-use/
 
 The hosted GeoJSON retains country geometry only, omits Antarctica (outside this map's display bounds), simplifies shapes at 0.02 degrees, and rounds coordinates to 4 decimal places.
+
+Map labels (public domain)
+Country names and label positions: https://naturalearth.s3.amazonaws.com/50m_cultural/ne_50m_admin_0_countries.zip
+State and province names and shapes: https://naturalearth.s3.amazonaws.com/10m_cultural/ne_10m_admin_1_states_provinces.zip
+Populated place names and positions: https://naturalearth.s3.amazonaws.com/50m_cultural/ne_50m_populated_places.zip
+
+scripts/prepare_map_labels.py reduces these sources to names, label positions, and display ranks in labels.json. Region label positions are representative points within the largest polygon for each region. The map shows more regional and place names as the user zooms in.
+
+State and province boundary lines (public domain)
+https://naturalearth.s3.amazonaws.com/10m_cultural/ne_10m_admin_1_states_provinces_lines.zip
+
+scripts/prepare_admin1_boundaries.py simplifies and rounds Natural Earth boundary lines, omits lines whose source minimum zoom exceeds this map's maximum zoom, and groups the remaining lines by zoom level in admin1-boundaries.geojson. The original source archive stays in ignored _local/ and is not published.

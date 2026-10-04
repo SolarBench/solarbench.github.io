@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
       element.setAttribute('aria-pressed', String(active));
       marker.setZIndexOffset(active ? 1000 : 0);
     });
-    if (navigate && map) map.flyTo([site.lat, site.lon], 4.5, {animate: !reducedMotion, duration: 1.1});
+    if (navigate && map) map.flyTo([site.lat, site.lon], 5.5, {animate: !reducedMotion, duration: 1.1});
   }
   select.addEventListener('change', () => chooseSite(select.value));
   function showAll() {
@@ -84,7 +84,11 @@ document.addEventListener('DOMContentLoaded', () => {
     map.setView([0, 0], 1);
     map.createPane('land-pane').style.zIndex = 250;
     map.createPane('data-pane').style.zIndex = 350;
+    map.createPane('region-border-pane').style.zIndex = 440;
     map.createPane('border-pane').style.zIndex = 450;
+    const labelPane = map.createPane('label-pane');
+    labelPane.style.zIndex = 500;
+    labelPane.style.pointerEvents = 'none';
     L.control.zoom({position: 'topright'}).addTo(map);
     const FullscreenControl = L.Control.extend({
       options: {position: 'topright'},
@@ -150,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }).addTo(map);
         L.geoJSON(countries, {
           pane: 'border-pane',
-          style: {color: '#d5dde4', weight: 0.7, fill: false},
+          style: {color: '#53687b', weight: 1, opacity: 0.75, fill: false},
           interactive: false
         }).addTo(map);
       })
@@ -158,6 +162,91 @@ document.addEventListener('DOMContentLoaded', () => {
         status.hidden = false;
         status.textContent = 'Country boundaries are temporarily unavailable.';
       });
+
+    const regionBorders = {};
+    function updateRegionBorders() {
+      const zoom = map.getZoom();
+      Object.entries(regionBorders).forEach(([level, layer]) => {
+        const visible = zoom >= (level === 'overview' ? 3.5 : level === 'regional' ? 4 : 5.5);
+        if (visible && !map.hasLayer(layer)) layer.addTo(map);
+        if (!visible && map.hasLayer(layer)) map.removeLayer(layer);
+      });
+    }
+    map.on('zoomend', updateRegionBorders);
+    fetch({{ '/assets/data/natural_earth/admin1-boundaries.geojson' | relative_url | append: '?v=1' | jsonify }})
+      .then(response => {
+        if (!response.ok) throw new Error('Region boundaries unavailable');
+        return response.json();
+      })
+      .then(boundaries => {
+        boundaries.features.forEach(feature => {
+          regionBorders[feature.properties.level] = L.geoJSON(feature, {
+            pane: 'region-border-pane',
+            style: {color: '#46596b', weight: 0.75, opacity: 0.7, fill: false},
+            interactive: false
+          });
+        });
+        updateRegionBorders();
+      })
+      .catch(error => console.warn(error));
+
+    const placeLabels = L.layerGroup().addTo(map);
+    let labelData;
+    let labelFrame;
+    function renderPlaceLabels() {
+      labelFrame = null;
+      if (!labelData) return;
+      placeLabels.clearLayers();
+      const zoom = map.getZoom();
+      const size = map.getSize();
+      const occupied = sites.map(site => {
+        const point = map.latLngToContainerPoint([site.lat, site.lon]);
+        return {left: point.x - 14, right: point.x + 14, top: point.y - 14, bottom: point.y + 14};
+      });
+      const candidates = [];
+      const countryRank = zoom < 2 ? 2 : zoom < 3 ? 4 : 7;
+      const regionRank = zoom < 4 ? -1 : zoom < 4.75 ? 5 : zoom < 5.5 ? 7 : zoom < 6.5 ? 9 : 20;
+      const placeRank = zoom < 5.25 ? -1 : zoom < 6 ? 2 : zoom < 7 ? 4 : 10;
+      [['countries', 'country', countryRank], ['regions', 'region', regionRank], ['places', 'place', placeRank]].forEach(([group, kind, limit]) => {
+        if (limit < 0) return;
+        labelData[group].forEach(item => {
+          if (item.rank <= limit) candidates.push({item, kind});
+        });
+      });
+      candidates.sort((a, b) => {
+        const priority = {country: 0, region: 1, place: 2};
+        return priority[a.kind] - priority[b.kind] || a.item.rank - b.item.rank;
+      });
+      let placed = 0;
+      for (const {item, kind} of candidates) {
+        const point = map.latLngToContainerPoint([item.lat, item.lon]);
+        const width = Math.min(165, item.name.length * (kind === 'country' ? 7 : 6.5) + 12);
+        const box = {left: point.x - width / 2, right: point.x + width / 2, top: point.y - 9, bottom: point.y + 9};
+        if (box.left < 8 || box.right > size.x - 8 || box.top < 8 || box.bottom > size.y - 8) continue;
+        if (occupied.some(other => box.left < other.right + 5 && box.right > other.left - 5 && box.top < other.bottom + 3 && box.bottom > other.top - 3)) continue;
+        const text = document.createElement('span');
+        text.textContent = item.name;
+        const icon = L.divIcon({className: 'map-place-label map-place-label-' + kind, html: text, iconSize: [0, 0]});
+        L.marker([item.lat, item.lon], {icon, pane: 'label-pane', interactive: false, keyboard: false}).addTo(placeLabels);
+        occupied.push(box);
+        if (++placed >= 90) break;
+      }
+    }
+    function schedulePlaceLabels() {
+      if (labelFrame) cancelAnimationFrame(labelFrame);
+      labelFrame = requestAnimationFrame(renderPlaceLabels);
+    }
+    map.on('moveend zoomend resize', schedulePlaceLabels);
+    fetch({{ '/assets/data/natural_earth/labels.json' | relative_url | append: '?v=' | append: radiation_version | jsonify }})
+      .then(response => {
+        if (!response.ok) throw new Error('Place labels unavailable');
+        return response.json();
+      })
+      .then(data => {
+        labelData = data;
+        schedulePlaceLabels();
+      })
+      .catch(error => console.warn('SolarBench map labels unavailable:', error));
 
     sites.forEach(site => {
       const icon = L.divIcon({
@@ -169,7 +258,6 @@ document.addEventListener('DOMContentLoaded', () => {
       element.setAttribute('role', 'button');
       element.setAttribute('tabindex', '0');
       element.setAttribute('aria-label', site.name + ': ' + site.label.join(', '));
-      element.setAttribute('title', site.name);
       marker.on('click', () => chooseSite(site.id));
       element.addEventListener('keydown', event => {
         if (event.key !== 'Enter' && event.key !== ' ') return;
