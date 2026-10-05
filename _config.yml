@@ -11,3 +11,9 @@ exclude:
   - assets/data/*.nc
   - assets/data/*.zip
   - assets/data/*.tsv
+
+nav_external_links:
+  - title: '<img class="discord-link-icon" src="/assets/imgs/discord.svg" width="22" height="22" alt=""> <span>Join our Discord</span>'
+    url: https://discord.gg/H5ScEHHKwb
+    opens_in_new_tab: true
+    hide_icon: true

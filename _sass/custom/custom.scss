@@ -434,3 +434,36 @@
   .site-explorer, .site-comparison { margin: 0; border: 0; border-radius: 0; }
   .site-comparison { border-top: 1px solid #dce5ed; }
 }
+
+// Shared community link, beneath the page navigation on desktop and mobile.
+.site-nav > .nav-list:has(.discord-link-icon) {
+  margin: 24px $gutter-spacing-sm 0;
+  padding-top: 16px;
+  border-top: 1px solid $border-color;
+
+  @include mq(md) {
+    margin-right: $gutter-spacing;
+    margin-left: $gutter-spacing;
+  }
+
+  .nav-list-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-right: 0;
+    padding-left: 0;
+    color: #084780;
+
+    &:focus-visible {
+      outline: 2px solid #5865f2;
+      outline-offset: 4px;
+      border-radius: 2px;
+    }
+  }
+
+  .discord-link-icon {
+    flex: 0 0 22px;
+    width: 22px;
+    height: 22px;
+  }
+}
