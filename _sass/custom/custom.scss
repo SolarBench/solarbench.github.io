@@ -436,10 +436,10 @@
 }
 
 // Shared community link, beneath the page navigation on desktop and mobile.
-.site-nav > .nav-list:has(.discord-link-icon) {
+.site-nav > .nav-list + .nav-list {
   margin: 24px $gutter-spacing-sm 0;
   padding-top: 16px;
-  border-top: 1px solid $border-color;
+  border-top: 1px solid #d9deea;
 
   @include mq(md) {
     margin-right: $gutter-spacing;
