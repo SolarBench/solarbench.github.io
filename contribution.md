@@ -18,4 +18,4 @@ To make the contribution process as smooth as possible, we kindly ask you to pre
 
 ## Python library contribution
 
-We welcome contributions to the SolarBench Python library. To propose improvements, bug fixes, or new features, please create a branch, make your changes, and submit a pull request to our <a href="https://github.com/Solar4cast/solarbench" target="_blank" rel="noopener noreferrer">GitHub repository</a> for review.
+We welcome contributions to the SolarBench Python library. To propose improvements, bug fixes, or new features, please create a branch, make your changes, and submit a pull request to our <a href="https://github.com/SolarBench/solarbench" target="_blank" rel="noopener noreferrer">GitHub repository</a> for review.

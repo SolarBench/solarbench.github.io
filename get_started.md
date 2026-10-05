@@ -10,7 +10,7 @@ nav_order: 6
   <h1>Get Started</h1>
   <div class="datasets-actions">
     <a href="https://solarbench.readthedocs.io/" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Toolbox documentation</a>
-    <a href="https://github.com/Solar4cast/solarbench" class="btn" target="_blank" rel="noopener noreferrer">GitHub repository</a>
+    <a href="https://github.com/SolarBench/solarbench" class="btn" target="_blank" rel="noopener noreferrer">GitHub repository</a>
   </div>
 </div>
 

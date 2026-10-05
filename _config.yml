@@ -3,8 +3,8 @@ description: Web page for SolarBench
 theme: just-the-docs
 logo: /assets/imgs/solarbench_logo_text.png
 
-url: https://solar4cast.github.io
-baseurl: /solarbench-site
+url: https://solarbench.github.io
+baseurl: ""
 
 exclude:
   - _local/
